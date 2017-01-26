@@ -7,6 +7,8 @@ RUN dotnet restore
 
 # copy and build everything else
 COPY . .
+
 RUN dotnet publish -c Release -o out
+RUN rm -rf bin obj Dockerfile Program.cs
 ENTRYPOINT ["dotnet", "out/dotnetapp.dll"]
 
